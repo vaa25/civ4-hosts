@@ -9,24 +9,33 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        System.getProperties().list(System.out);
-        if (args.length!=1){
+        if (args.length != 1) {
             System.out.println("try 'java -jar civ4-hosts.jar [add|remove]'");
             System.exit(0);
         }
-        if ("add".equals(args[0])){
+        if ("add".equals(args[0])) {
             new Main().add();
-        } else if ("remove".equals(args[0])){
+        } else if ("remove".equals(args[0])) {
             new Main().remove();
-        } else{
+        } else {
             System.out.println("Only 'add' or 'remove' arguments supported");
             System.exit(0);
         }
 
     }
 
+    private void validateHosts(Path path) {
+        if (Files.isRegularFile(path)) {
+            System.out.println("'hosts' found in " + path.getParent());
+        } else {
+            System.out.println("'hosts' not found in " + path.getParent());
+            System.exit(0);
+        }
+    }
+
     private void add() throws IOException {
-        final Path path = new HostsAddress().get();
+        final Path path = new HostsPath().get();
+        validateHosts(path);
         final List<String> local = Files.readAllLines(path);
         final List<String> zulan = Files.readAllLines(Paths.get("civ4-hosts"));
         final List<String> merged = Strings.merge(local, zulan);
@@ -35,7 +44,8 @@ public class Main {
     }
 
     private void remove() throws IOException {
-        final Path path = new HostsAddress().get();
+        final Path path = new HostsPath().get();
+        validateHosts(path);
         final List<String> local = Files.readAllLines(path);
         final List<String> zulan = Files.readAllLines(Paths.get("civ4-hosts"));
         final List<String> merged = Strings.remove(local, zulan);
