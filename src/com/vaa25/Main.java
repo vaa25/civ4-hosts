@@ -37,7 +37,7 @@ public class Main {
         final Path path = new HostsPath().get();
         validateHosts(path);
         final List<String> local = Files.readAllLines(path);
-        final List<String> zulan = Files.readAllLines(Paths.get("civ4-hosts"));
+        final List<String> zulan = Files.readAllLines(zulanPath());
         final List<String> merged = Strings.merge(local, zulan);
         Files.write(path, merged);
         System.out.println("Civ 4 hosts added");
@@ -47,9 +47,13 @@ public class Main {
         final Path path = new HostsPath().get();
         validateHosts(path);
         final List<String> local = Files.readAllLines(path);
-        final List<String> zulan = Files.readAllLines(Paths.get("civ4-hosts"));
+        final List<String> zulan = Files.readAllLines(zulanPath());
         final List<String> merged = Strings.remove(local, zulan);
         Files.write(path, merged);
         System.out.println("Civ 4 hosts removed");
+    }
+
+    private Path zulanPath() {
+        return Paths.get(System.getProperty("java.class.path")).getParent().resolve("civ4-hosts");
     }
 }

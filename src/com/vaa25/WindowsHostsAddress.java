@@ -21,7 +21,7 @@ public class WindowsHostsAddress implements HostsAddress {
             final Process reg = builder.start();
             final String hosts = getHostsFromRegistry(systemRoot, reg);
             reg.waitFor();
-            return Paths.get(hosts);
+            return Paths.get(hosts, "hosts");
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
@@ -36,7 +36,7 @@ public class WindowsHostsAddress implements HostsAddress {
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException(
                             "No registry key 'HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\services\\Tcpip\\Parameters\\DataBasePath'"));
-            return dataBasePath.split("\\s+")[3].replace("%SystemRoot%", systemRoot) + "\\hosts";
+            return dataBasePath.split("\\s+")[3].replace("%SystemRoot%", systemRoot);
         }
     }
 }
