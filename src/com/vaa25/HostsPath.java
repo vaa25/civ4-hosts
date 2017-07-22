@@ -15,6 +15,14 @@ public class HostsPath {
         hostsAddresses = new HashMap<>();
         hostsAddresses.put("Linux", new LinuxHostsAddress());
         hostsAddresses.put("Windows 10", new WindowsHostsAddress());
+        hostsAddresses.put("Windows 8.1", new WindowsHostsAddress());
+        hostsAddresses.put("Windows 8", new WindowsHostsAddress());
+        hostsAddresses.put("Windows Vista", new WindowsHostsAddress());
+        hostsAddresses.put("Windows 7", new WindowsHostsAddress());
+        hostsAddresses.put("Windows XP", new WindowsHostsAddress());
+        hostsAddresses.put("Windows 2003", new WindowsHostsAddress());
+        hostsAddresses.put("Windows 2000", new WindowsHostsAddress());
+        hostsAddresses.put("Windows NT", new WindowsHostsAddress());
     }
 
     public Path get() {
