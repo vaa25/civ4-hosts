@@ -6,6 +6,7 @@ Run commands:
 
 linux:
  'sudo java -jar civ4-hosts.jar [add|remove]'
+ 
 Windows 10,
 Windows 8.1,
 Windows 8,
