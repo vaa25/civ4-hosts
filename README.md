@@ -1,3 +1,9 @@
+*Adds or removes civ4 multiplayer server addresses into system hosts.*
+
+Java 8 required.
+
+Run commands:
+
 linux:
  'sudo java -jar civ4-hosts.jar [add|remove]'
 Windows 10,
