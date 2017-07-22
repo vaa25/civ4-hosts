@@ -1,2 +1,2 @@
 linux: 'sudo java -jar civ4-hosts.jar [add|remove]'
-Windows: as administrator 'java -jar {absolute_path}\civ4-hosts.jar [add|remove]'
+Windows 10: as administrator 'java -jar {absolute_path}\civ4-hosts.jar [add|remove]'
