@@ -54,6 +54,6 @@ public class Main {
     }
 
     private Path zulanPath() {
-        return Paths.get(System.getProperty("java.class.path")).getParent().resolve("civ4-hosts");
+        return Paths.get(System.getProperty("java.class.path")).resolveSibling("civ4-hosts");
     }
 }

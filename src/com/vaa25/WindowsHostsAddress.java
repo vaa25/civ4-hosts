@@ -29,7 +29,6 @@ public class WindowsHostsAddress implements HostsAddress {
 
     private String getHostsFromRegistry(String systemRoot, Process reg) throws IOException {
         try (BufferedReader output = new BufferedReader(new InputStreamReader(reg.getInputStream()))) {
-
             final String dataBasePath = output
                     .lines()
                     .filter(key -> key.contains("DataBasePath"))
